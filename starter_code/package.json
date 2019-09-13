@@ -7,6 +7,9 @@
     "dev": "DEBUG=starter-code:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
@@ -20,5 +23,12 @@
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
-  }
+  },
+  "main": "app.js",
+  "bin": {
+    "starter-code": "seed.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
