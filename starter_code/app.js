@@ -8,11 +8,14 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const movies       = require('./bin/seed.js')
+const Movie        = require('./models/Movie')
 
 
 mongoose
   .connect('mongodb://localhost/starter-code', {useNewUrlParser: true})
   .then(x => {
+    seedMovies()
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
   .catch(err => {
@@ -54,5 +57,15 @@ app.locals.title = 'Express - Generated with IronGenerator';
 const index = require('./routes/index');
 app.use('/', index);
 
+
+
+
+/// Testing 
+function seedMovies(){ 
+  Movie.collection.drop();
+  Movie.insertMany(movies).then(mov=>{
+            console.log(mov)
+  }).catch(err=>console.error(err))
+}
 
 module.exports = app;
